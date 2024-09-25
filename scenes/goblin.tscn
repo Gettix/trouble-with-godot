@@ -1,0 +1,55 @@
+[gd_scene load_steps=9 format=3 uid="uid://mk1v08h5puxq"]
+
+[ext_resource type="Script" path="res://scripts/goblin.gd" id="1_6heei"]
+[ext_resource type="Texture2D" uid="uid://c12n7xt67vspp" path="res://assets/monsters/goblin.png" id="1_6w7pc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n6oln"]
+atlas = ExtResource("1_6w7pc")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dkhya"]
+atlas = ExtResource("1_6w7pc")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nenet"]
+atlas = ExtResource("1_6w7pc")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1pve0"]
+atlas = ExtResource("1_6w7pc")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_icsx1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n6oln")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dkhya")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_nenet")
+}, {
+"duration": 0.7,
+"texture": SubResource("AtlasTexture_1pve0")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xvq6o"]
+size = Vector2(7, 8)
+
+[node name="Goblin" type="CharacterBody2D" groups=["monsters"]]
+motion_mode = 1
+script = ExtResource("1_6heei")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_icsx1")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 3)
+shape = SubResource("RectangleShape2D_xvq6o")
